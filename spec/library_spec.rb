@@ -31,4 +31,17 @@ describe Library do
       expect(book.damaged?).to eq true
     end
   end
+
+  describe "#damaged_book_count" do
+    it "returns the number of damaged books" do
+      allow(book).to receive(:damaged=) { true }
+      allow(book).to receive(:damaged?) { true }
+
+      subject.add_book(book)
+      subject.add_book(book)
+      subject.add_book(book)
+
+      expect(subject.damaged_book_count).to eq 3
+    end
+  end
 end
