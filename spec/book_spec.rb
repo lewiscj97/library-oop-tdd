@@ -1,3 +1,5 @@
+require 'book'
+
 describe Book do
   describe "#initialize" do
     it "adds a title and an author property" do
