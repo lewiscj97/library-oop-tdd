@@ -1,7 +1,7 @@
 require 'library'
 
 describe Library do
-  let(:book) { double :book, title: "This is the Title", author: "Lewis"}
+  let(:book) { double :book, title: "This is the Title", author: "Lewis", "damaged=": true, damaged?: true}
 
   describe "#add_book" do
     it "adds a book to the collection of books" do
@@ -24,8 +24,6 @@ describe Library do
   
   describe "#mark_damaged" do
     it "marks a book as damaged" do
-      allow(book).to receive(:damaged=) { true }
-      allow(book).to receive(:damaged?) { true }
       subject.add_book(book)
       subject.mark_damaged(book)
       expect(book.damaged?).to eq true
@@ -34,14 +32,24 @@ describe Library do
 
   describe "#damaged_book_count" do
     it "returns the number of damaged books" do
-      allow(book).to receive(:damaged=) { true }
-      allow(book).to receive(:damaged?) { true }
-
       subject.add_book(book)
       subject.add_book(book)
       subject.add_book(book)
 
       expect(subject.damaged_book_count).to eq 3
+    end
+  end
+
+  describe "#books_by_author" do
+    let(:book2) { double :book, title: "This is another Title", author: "Lewis"}
+    let(:book3) { double :book, title: "This is another Title", author: "Ana"}
+
+    it "returns a list of books by a specific author" do
+      subject.add_book(book)
+      subject.add_book(book2)
+      subject.add_book(book3)
+
+      expect(subject.books_by_author("Lewis")).to include book, book2
     end
   end
 end
