@@ -10,4 +10,8 @@ class Library
   def all_books
     @books.map { |book| {title: book.title, author: book.author} }
   end
+
+  def mark_damaged(book)
+    book.damaged = true
+  end
 end
