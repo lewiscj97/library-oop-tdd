@@ -20,4 +20,12 @@ describe Book do
       expect(book.author).to eq "Lewis Jones"
     end
   end
+
+  describe "#damaged" do
+    it "sets whether the book is damaged or not" do
+      book = Book.new("This is the Title", "Lewis Jones")
+      book.damaged = true
+      expect(book.damaged?).to eq true
+    end
+  end
 end
