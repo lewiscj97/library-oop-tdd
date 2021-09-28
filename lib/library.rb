@@ -1,6 +1,4 @@
 class Library
-  attr_reader :books
-
   def initialize
     @books = []
   end
@@ -10,10 +8,6 @@ class Library
   end
 
   def all_books
-    hash_list = []
-    @books.each do |book|
-      hash_list << {title: book.title, author: book.author}
-    end
-    hash_list
+    @books.map { |book| {title: book.title, author: book.author} }
   end
 end

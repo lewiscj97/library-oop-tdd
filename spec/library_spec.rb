@@ -6,7 +6,7 @@ describe Library do
   describe "#add_book" do
     it "adds a book to the collection of books" do
       subject.add_book(book)
-      expect(subject.books).to include book
+      expect(subject.all_books).to include ({title: "This is the Title", author: "Lewis"})
     end
   end
 
