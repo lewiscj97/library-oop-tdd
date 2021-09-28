@@ -1,3 +1,5 @@
+require 'library'
+
 describe Library do
   let(:book) { double :book }
 
