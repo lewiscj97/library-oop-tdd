@@ -8,7 +8,7 @@ class Library
   end
 
   def all_books
-    @books.map { |book| {title: book.title, author: book.author} }
+    map_objects_to_title_and_author(@books)
   end
 
   def mark_damaged(book)
@@ -24,7 +24,12 @@ class Library
   def books_by_author(input)
     author_books = []
     @books.each { |book| author_books << book if book.author == input }
-    
-    author_books.map { |book| {title: book.title, author: book.author} }
+    map_objects_to_title_and_author(author_books)
+  end
+
+  private
+
+  def map_objects_to_title_and_author(books)
+    books.map { |book| {title: book.title, author: book.author} }
   end
 end
