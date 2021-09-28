@@ -14,4 +14,10 @@ class Library
   def mark_damaged(book)
     book.damaged = true
   end
+
+  def damaged_book_count
+    count = 0
+    @books.each { |book| count += 1 if book.damaged? == true }
+    count
+  end
 end
