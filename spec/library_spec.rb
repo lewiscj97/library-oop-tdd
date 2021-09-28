@@ -49,7 +49,10 @@ describe Library do
       subject.add_book(book2)
       subject.add_book(book3)
 
-      expect(subject.books_by_author("Lewis")).to include book, book2
+      expect(subject.books_by_author("Lewis")).to eq [
+        {title: "This is the Title", author: "Lewis"},
+        {title: "This is another Title", author: "Lewis"}
+      ]
     end
   end
 end
