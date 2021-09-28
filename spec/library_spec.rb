@@ -21,4 +21,14 @@ describe Library do
       ]
     end
   end
+  
+  describe "#mark_damaged" do
+    it "marks a book as damaged" do
+      allow(book).to receive(:damaged) { true }
+      allow(book).to receive(:damaged?) { true }
+      subject.add_book(book)
+      subject.mark_damaged(book)
+      expect(book.damaged?).to eq true
+    end
+  end
 end
